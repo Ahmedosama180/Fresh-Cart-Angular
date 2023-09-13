@@ -1,0 +1,19 @@
+
+<div class="product px-2 py-4">
+  <a [routerLink]="['/Productdetails',Proudact._id]">
+  <img [src]="Proudact.imageCover" class="img-fluid" alt="">
+  <p class="text-main">{{Proudact.category.name}}</p>
+  <h2 class="h6">{{Proudact.title.split(" ").splice(0,2).join(" ")}}</h2>
+
+
+  <div class="d-flex justify-content-between">
+    <span>{{Proudact.price|currency:'EG'}}</span>
+    <div class="div">
+      <i class="fa fa-star rating-color"></i>
+      {{Proudact.ratingsAverage}}
+    </div>
+  </div>
+</a>
+<button (click)="addTOCart(Proudact._id)" class="btn bg-main w-100 text-white">+Add</button>
+</div>
+

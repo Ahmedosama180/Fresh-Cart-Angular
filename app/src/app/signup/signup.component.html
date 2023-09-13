@@ -1,0 +1,78 @@
+<div class="w-75 mx-auto py-4">
+  <h4>Register Now:</h4>
+      <div *ngIf="apiErorr" class="alert alert-danger text-center">
+        {{apiErorr}}
+      </div>
+  <form  (ngSubmit)="handelRegister(registerer)" [formGroup]="registerer">
+
+    <div class="name  my-2">
+      <label for="name" class="py-2">Name :</label>
+      <input formControlName="name" type="text" class="form-control mb-2" id="name" >
+    </div>
+    <div *ngIf="registerer.get('name')?.errors && registerer.get('name')?.touched" class="alert alert-danger">
+
+      <p *ngIf="registerer.get('name')?. getError('required')" class="m-0 p-0 text-center">Name  is Required</p>
+      <p *ngIf="registerer.get('name')?. getError('maxlength')" class="m-0 p-0 text-center">Name max Length is 20</p>
+      <p *ngIf="registerer.get('name')?. getError('minlength')" class="m-0 p-0 text-center">Name min Length is 3</p>
+    </div>
+
+
+    <div class="email" >
+      <label for="email" class="py-2">Email :</label>
+      <input formControlName="email" type="email" class="form-control mb-2" id="email">
+
+    </div>
+    <div *ngIf="registerer.get('email')?.errors && registerer.get('email')?.touched" class="alert alert-danger">
+
+      <p *ngIf="registerer.get('email')?. getError('required')" class="m-0 p-0 text-center" >Email is Required</p>
+      <p *ngIf="registerer.get('email')?. getError('email')" class="m-0 p-0 text-center">Email invalid  </p>
+    </div>
+
+    <!-- [ngClass]="{'is-invalid':(Name?.errors||Name?.touched)&&Name?.is-invalid}" name="Name">
+      <div  class="alret alret-danger">
+        <p *ngIf="Name?.errors?.['minLength']"  class=" m-0">Name minLength is 3</p>
+        <p *ngIf="Name?.errors?.['required']"   class="m-0"  >Name  is Requird</p>
+      </div> -->
+    <div class="phone">
+      <label for="phone" class="py-2">Phone :</label>
+      <input formControlName="phone" type="tel" class="form-control mb-2" id="phone" >
+    </div>
+    <div *ngIf="registerer.get('phone')?.errors && registerer.get('phone')?.touched" class="alert alert-danger">
+      <p *ngIf="registerer.get('phone')?. getError('required')" class="m-0 p-0 text-center">Phone  is Required</p>
+      <p *ngIf="registerer.get('phone')?. getError('pattern')" class="m-0 p-0 text-center">Enter a valid Egyptian phone</p>
+    </div>
+
+    <div class="Password">
+      <label for="password" class="py-2">Password :</label>
+      <input formControlName="password" type="password" class="form-control mb-2" id="password" >
+    </div>
+    <div *ngIf="registerer.get('password')?.errors && registerer.get('password')?.touched" class="alert alert-danger">
+
+      <p *ngIf="registerer.get('password')?. getError('required')"class="m-0 p-0 text-center">password  is Required</p>
+      <p *ngIf="registerer.get('password')?. getError('pattern')" class="m-0 p-0 text-center">password must start with upperCase then 3 to 10</p>
+    </div>
+
+    <div class="rePassword ">
+      <label for="rePassword" class="py-2">Re-Password :</label>
+      <input formControlName="rePassword" type="password" class="form-control mb-2" id="rePassword" >
+    </div>
+
+     <div *ngIf="registerer.get('rePassword')?.errors && registerer.get('rePassword')?.touched" class="alert alert-danger">
+
+      <p *ngIf="registerer.get('rePassword')?. getError('required')" class="m-0 p-0 text-center" >rePassword  is Required</p>
+      <p *ngIf="registerer.get('rePassword')?. getError('passwordMatch')" class="m-0 p-0 text-center" >password and repassword not match</p>
+      <p *ngIf="registerer.get('rePassword')?. getError('pattern')" class="m-0 p-0 text-center">RE-Password must start with upperCase then 3 to 10</p>
+    </div>
+                    <div class="but  text-center my-3 ">
+                      <button  [disabled]="registerer.invalid"  type="submit" class=" bg-main btn  w-25 border-none border-0 text-white">
+                        <i *ngIf="isLodging" class="fas fa-spinner fa-spin"></i>
+                        <span *ngIf="!isLodging">Register</span>
+                      </button>
+
+                    </div>
+
+
+
+  </form>
+
+</div>

@@ -1,0 +1,41 @@
+<div class="w-75 mx-auto py-4">
+  <h4>Register Now:</h4>
+      <div *ngIf="apiErorr" class="alert alert-danger text-center">
+        {{apiErorr}}
+      </div>
+  <form  (ngSubmit)="handelloginForm(loginForm)" [formGroup]="loginForm">
+
+    <div class="email" >
+      <label for="email" class="py-2">Email :</label>
+      <input formControlName="email" type="email" class="form-control mb-2" id="email">
+
+    </div>
+    <div *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched" class="alert alert-danger">
+
+      <p *ngIf="loginForm.get('email')?. getError('required')" class="m-0 p-0 text-center" >Email is Required</p>
+      <p *ngIf="loginForm.get('email')?. getError('email')" class="m-0 p-0 text-center">Email invalid  </p>
+    </div>
+
+
+    <div class="Password">
+      <label for="password" class="py-2">Password :</label>
+      <input formControlName="password" type="password" class="form-control mb-2" id="password" >
+    </div>
+    <div *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched" class="alert alert-danger">
+
+      <p *ngIf="loginForm.get('password')?. getError('required')"class="m-0 p-0 text-center">password  is Required</p>
+      <p *ngIf="loginForm.get('password')?. getError('pattern')" class="m-0 p-0 text-center">password must start with upperCase then 3 to 10</p>
+    </div>
+
+
+                    <div class="but  text-center my-3 ">
+                      <button  [disabled]="loginForm.invalid"  type="submit" class=" bg-main btn  w-25 border-none border-0 text-white">
+                        <i *ngIf="isLodging" class="fas fa-spinner fa-spin"></i>
+                        <span *ngIf="!isLodging">Submit</span>
+                      </button>
+
+                    </div>
+  </form>
+
+</div>
+

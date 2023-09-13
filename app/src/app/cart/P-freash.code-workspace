@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"path": "../../../.."
+		},
+		{
+			"path": "C:/Users/Daba7/Desktop/ftest-none"
+		},
+		{
+			"path": "E:/noonApi"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "ftest-none"
+	},
+	"extensions": {
+		"recommendations": [
+			"coenraads.bracket-pair-colorizer-2",
+			"bracketpaircolordlw.bracket-pair-color-dlw"
+		]
+	}
+}
